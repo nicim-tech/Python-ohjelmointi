@@ -8,4 +8,3 @@ radius = float(input("Anna ympyrän säde: "))
 area = math.pi * radius ** 2
 circumference = 2 * math.pi * radius
 print(f"Ympyrän pinta-ala on: {area}")
-print(f"Ympyrän ympärysmitta on: {circumference}")

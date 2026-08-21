@@ -12,17 +12,6 @@ print(f"Lukujen summa on: {luku1 + luku2 + luku3}")
 print(f"Lukujen tulo on: {luku1 * luku2 * luku3}")
 print(f"Lukujen keskiarvo on: {(luku1 + luku2 + luku3) / 3}")
 
-leiviskä = float(input("Anna leiviskät: "))
-naula = float(input("Anna naulat: "))
-luoti = float(input("Anna luodit: "))
-kokonaisnaula = leiviskä * 20 + naula + luoti / 32 
-kokonaisluoti = kokonaisnaula * 32
-luoti = 13.3 / 1000
-# 1. Tulostetaan kokonaiset kilogrammat ja gramman osuus.
-# Yksi luoti = 13,3 grammaa; 1000 grammaa = 1 kilogramma
-massa_kg = kokonaisluoti * 13.3 / 1000
-print(f"Massa nykymittojen mukaan: {massa_kg:.0f} kg ja grammat {((leiviskä + naula + luoti) % 1) * 1000:.0f} g")
-
 import random
 # 1. Arvotaan  kolme satunnaislukua väliltä 0-9 ja tulostetaan se.
 satunnaisluku1 = random.randint(0, 9)

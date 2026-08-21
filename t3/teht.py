@@ -1,0 +1,17 @@
+import math
+leiviska = float(input("Anna leiviskät: "))
+naula = float(input("Anna naulat: "))
+luoti = float(input("Anna luodit: "))
+
+luodin_paino = 13.3
+kokonaisnaula = 32 * luodin_paino
+leiviskä = 20 * kokonaisnaula
+
+# 1. Tulostetaan kokonaiset kilogrammat ja gramman osuus.
+# Yksi luoti = 13,3 grammaa; 1000 grammaa = 1 kilogramma
+
+kokonaisgrammat = (leiviska * leiviskä) + (naula * kokonaisnaula) + (luoti * luodin_paino)
+kilogrammat = int(kokonaisgrammat // 1000)
+grammat = kokonaisgrammat % 1000
+print(f"Massa nykymittojen mukaan: {kilogrammat:.0f} kg ja {grammat:.2f} g")
+      
