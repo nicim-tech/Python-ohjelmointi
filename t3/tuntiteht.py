@@ -1,5 +1,3 @@
-
-
 opintopisteet = input("Anna opintopisteiden määrä: ")
 if int(opintopisteet) >= 150:
     print("Olet suorittanut riittävästi opintopisteitä.")
