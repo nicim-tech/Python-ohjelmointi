@@ -24,7 +24,8 @@ while True :
             print("Avasit lopeta peli.")
         elif valinta == "lopeta":
             print("Lopetetaan peli. Kiitos pelaamisesta!")
+
             break
-        break
+    break
             
             
