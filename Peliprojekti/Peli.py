@@ -7,11 +7,11 @@ while True :
     print(f"hei {nimi}, tervetuloa pelaamaan peliä!")
     print(f"Olet {ika} vuotta vanha, joten voit pelata peliä.")
     def valikko():
-        print(f"# päävalikko")
-        print(f"Aloita peli painamalla 1")
-        print(f"Katso ohjeet painamalla 2")
-        print(f"Kirjoita 'lopeta' lopettaaksesi pelin")
-        print(f"Katso credits painamalla 3")
+        print("# päävalikko")
+        print("Aloita peli painamalla 1")
+        print("Katso ohjeet painamalla 2")
+        print("Kirjoita 'lopeta' lopettaaksesi pelin")
+        print("Katso credits painamalla 3")
         print ("")
     def lista():
         nici = []
@@ -43,6 +43,7 @@ while True :
 
     while True :
         print("")  
+        valikko()
         valinta = input("Valitse toiminto: ")
         if valinta == "1":
             print("Aloitetaan peli!")
