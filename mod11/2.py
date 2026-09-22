@@ -3,6 +3,6 @@ class Auto:
         self.rekisteritunnus = rekisteritunnus
         self.huippunopeus = huippunopeus
 
-auto1 = auto("ABC-123", 142 )
+auto1 = auto("ABC-123", 142)
 
 print(f"Auton tunnus {rekisteritunnus}: ja nopeus {huippunopeus}.")
