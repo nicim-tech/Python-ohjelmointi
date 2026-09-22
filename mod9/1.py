@@ -5,6 +5,6 @@ class Car:
         self.cs = current_speed
         self.td = travelled_distance
 
-car1 = Car("ABC-123", 147)
+car1 = Car("ABC-123", 142)
 
-print(f"Rigisteration number is {car1.rn:s} and it's maximun speed is {car1.ms} km/h")
+print(f"Rigisteration number is {car1.rn:s} and it's maximum speed is {car1.ms} km/h")

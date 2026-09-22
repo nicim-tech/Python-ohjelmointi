@@ -68,3 +68,7 @@ comp_cars = []
 comp_cars.append(Car(BMW))
 comp_cars.append(Car(Mercedes))
 comp_cars.append(Car(Porche))
+
+for t in Car:
+    t.tulosta_tiedot()
+
