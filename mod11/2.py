@@ -60,4 +60,6 @@ class competition:
         self.cn = comp_nimi
         self.cp = comp_pituus
 class electric(Car):
-    def __init__(self, registration)
+    def __init__(self, registration):
+        self.rs = registration
+        
