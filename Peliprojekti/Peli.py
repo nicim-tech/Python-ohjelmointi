@@ -1,3 +1,17 @@
+
+class Player:
+    def __init__(self,nimi, kortit, pakka):
+        self.nimi = nimi
+        self.kortit = kortit
+        self.pakka = pakka
+
+class Kortit(Player):
+    def __init__(self, nimi, kortit, pakka):
+        super().__init__(nimi, kortit, pakka)
+
+    
+
+
 while True :
     nimi = input("Mikä on nimesi? ")
     ika = int(input("Anna ikäsi: "))
@@ -27,7 +41,7 @@ while True :
         print("9. kortti, ruutu 9")
         print("10. kortti, hertta 10")
         print("Saat valita ensimmäisen kortin, jonka haluat pelata. Muut kortit vedät pakasta.")
-        print("Jokaisella kortillansa on oma arvonsa, ja sinun tehtäväsi on kerätä suurin kortti, vältä jokereita sillä ne miinustavat sinulta pisteitä. Ässät antavat sinulle lisää mahdollisuuksia ottaa uusia kortteja vaihtamalla yhden korteistasi pakkaan, jos kuitenkin saat jokerin tiput takaisin alkuun. 2 on hyödylinen kortti, sillä se pelastaa sinut jos osut jokeriin.")
+        print("Jokaisella kortillansa on oma arvonsa, ja sinun tehtäväsi on kerätä suurin kortti. Peli pelataan 3 korttiin asti ja se kenellä on 3 korkeampaa korttia yhteensä voittaa, vältä jokereita sillä ne varastavat sinulta kortin. Kun nostat ässän saat vaihtaa yhden korteistasi pakkaan.")
         while True:
             kortit = input("Valitse kortti (1-10): ")
             if kortit == "lopeta":
@@ -54,7 +68,15 @@ while True :
             credits()
         elif valinta == "lopeta":
             print("Lopetetaan peli. Kiitos pelaamisesta!")
+
             break
     break
             
-            
+def is_empty(syote):
+    if syote == "":
+        return True
+    else:
+        return False
+    
+def is_number(syote):
+    pass
