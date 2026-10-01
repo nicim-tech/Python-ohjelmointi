@@ -2,9 +2,18 @@
 # parametrit: none
 # Return values: pakka -> lista
 import random
+
+
+class Player:
+    def __init__(self, nimi):
+         self.nimi = nimi
+         self.kortit = []
+         self.pisteet = 0
+
+     
 def korttiPakka():
-    maat = ["Ruutu","Hertta", "Risti", "Pata"]
-    kortti_arvot = {"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"J":11,"Q":12,"K":13,"A":14}
+maat = ["Ruutu","Hertta", "Risti", "Pata"]
+kortti_arvot = {"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"J":11,"Q":12,"K":13,"A":14}
 
 pakka = []
 for maa in maat:
