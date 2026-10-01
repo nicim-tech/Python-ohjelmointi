@@ -1,0 +1,10 @@
+import json
+tallennus_data = {"Julkaisut": "Aku Ankka", "sivut": 200, "julkaisija": [Aki Hyyppä, Rosa Liksom]}
+with open("save.json", "w") as tiedosto:
+    json.dump(tallennus_data, tiedosto)
+with open("save.json", "r") as tiedosto:
+    data_luettu = json.load(tiedosto)
+print(f"Julkaisut: {data_luettu}")
+
+with open("save.txt", "w") as tiedosto:
+    tiedosto.write("toimii")
