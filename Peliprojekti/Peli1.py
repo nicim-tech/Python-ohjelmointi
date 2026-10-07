@@ -106,19 +106,13 @@ class Kynsistudio:
     def show_inventory(tavarat):
         print("")
         print("~ INVENTAARIO ~")
-
-        if not tavarat:
+        if len(tavarat) == 0:
             print("Inventaario on tyhjä.")
         else:
             for tavara in tavarat:
                 print(f"- {tavara}")
-        print("")
+    print("")
 
-    def credits():
-         print("")
-         print("~ CREDITS ~")
-         print("Pelin suunnittelija ja ohjelmoija: Nicim ")
-         print("Tehty vuonna: 2026")
     def studiot():
          print("Base")
          print("Viilaus")
@@ -146,10 +140,6 @@ def studio1(pelaaja):
     print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
     print("")
 
-# Pelin alkutiedot
-
-
-
 # Luodaan pelaaja hahmo
 pelaaja = Pelaaja(name)
 
@@ -170,7 +160,10 @@ while True:
         Kynsistudio.show_inventory(pelaaja.tavarat)
 
     elif valinta == "3":
-        Kynsistudio.credits()
+        print("")
+        print("~ CREDITS ~")
+        print("Pelin suunnittelija ja ohjelmoija: Nicim ")
+        print("Tehty vuonna: 2026")
 
     elif valinta == "4":
         pelaaja.nayta_tiedot()
