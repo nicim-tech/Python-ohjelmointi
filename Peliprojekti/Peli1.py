@@ -207,11 +207,11 @@ inventaario = []
 
 def studio1(nimi):
     print("")
-    print("Astut aulaan sisälle ja istut, sillä edessäsi on vielä muutama muu asiakas. Aula on siistin näköinen, mutta asiakaspalvelija näyttää hermostuneelta")
-    print("Jatkat omia ajatuksiasi ja odotat kärsivällisesti. ")
+    print("Astut aulaan sisälle ja istut, sillä edessäsi on vielä muutama muu asiakas. Aula on siistin näköinen, ja studiossa tuoksuu hyvältä.")
+    print("Jatkat matkaa pehmeälle sohvalle istut alas, kahvi kädessäsi ja odotat kärsivällisesti omaa vuoroasi.")
     print("")
 
-    choice = input("Olet aulassa odottamassa vuoroasi, sinulle tarjotaan vettä hyväksytkö vaikka se on muovisessa pullossa? (kyllä/ei): ")
+    choice = input("Olet aulassa odottamassa vuoroasi, sinulle tarjotaan vettä hyväksytkö sen vaikka se on muovisessa pullossa? (kyllä/ei): ")
     if choice == "kyllä":
         nimi.lisaa_tavara("Vesipullo")
         nimi.ekologisuus -= 4
@@ -256,8 +256,6 @@ def studio1(nimi):
     else:
         print("Et voittanut tällä kertaa.")
         print("Materiaalien kulutus oli liian suurta.")
-
-
 
 # Luodaan nimi hahmo
 nimi = Pelaaja(name)
