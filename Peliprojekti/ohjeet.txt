@@ -1,1 +1,1 @@
-# Peli alkaa kysymällä nimeäsi ja ikääsi, peli on k-12 joten jos olet alle 12- vuotias et voi pelata peliä. Keräät pisteitä tekemällä ekologisia valintoja ja rakentamalla omat kyntesi. Voit vaikuttaa omiin pisteisiisi valinnoilla, joita teet pelissä. Jos saat 100 pistettä voitat pelin.
+# Peli alkaa kysymällä nimeäsi ja ikääsi, peli on k-12 joten jos olet alle 12- vuotias et voi pelata peliä. Keräät pisteitä tekemällä ekologisia valintoja ja rakentamalla omat kyntesi. Voit vaikuttaa omiin pisteisiisi valinnoilla, joita teet pelissä. Jos saat 30 pistettä voitat pelin.

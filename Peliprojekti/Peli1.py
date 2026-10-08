@@ -11,7 +11,7 @@ def Lataapeli(nimi):
          return None
 # Tallennetaan peli
 def tallenna_peli(pelaaja):
-    tallennus = {"nimi": pelaaja.nimi, "sijainti": pelaaja.sijainti, "ekologisuus": pelaaja.ekologisuus, "tavarat": pelaaja.tavarat}
+    tallennus = {"nimi": pelaaja.nimi, "sijainti": pelaaja.sijainti, "ekologisuus": pelaaja.ekologisuus, "tavarat": pelaaja.tavarat,"kynsimuoto": pelaaja.kynsimuoto,"vari": pelaaja.vari,"koristelu": pelaaja.koristelu}
     with open(f"tallennus_{pelaaja.nimi}.json", "w", encoding="utf-8") as tiedosto:
          json.dump(tallennus, tiedosto, ensure_ascii=False, indent=4)
     with open(f"tallennus_{pelaaja.nimi}.json", "r") as tiedosto:
@@ -20,18 +20,6 @@ def tallenna_peli(pelaaja):
     print("Peli tallennettu onnistuneesti. ")
     print("")
 
-# Tallennuksen tietojen näyttäminen 
-def Printtaatallennetuttiedostot(dataluettu): 
-    print("") 
-    print("~ TALLENNETTU PELI ~") 
-    print(f"Pelaaja: {dataluettu['nimi']}") 
-    print(f"Sijainti: {dataluettu['sijainti']}") 
-    print(f"Ekologisuus: {dataluettu['ekologisuus']}") 
-    print(f"Tavarat: {dataluettu['tavarat']}") 
-    print(f"Kynsimuoto: {dataluettu['kynsimuoto']}") 
-    print(f"Väri: {dataluettu['vari']}") 
-    print(f"Koristelu: {dataluettu['koristelu']}") 
-    print("")
 
 # Funktio print komennolle
 def Printtaatallennetuttiedostot(dataluettu):
@@ -56,6 +44,7 @@ print("")
 age = int(input("Kuinka vanha olet?: "))
 if age < 12:
     print("Et ole tarpeeksi vanha pelaamaan tätä peliä :(")
+    exit()
 else:
     print("Tervetuloa pelaamaan kynsistudiota", name, "!")
     print("")
@@ -253,10 +242,11 @@ def studio1(nimi):
     print("Kyntesi ovat valmiit!")
     print(" ~ KYNSIEN LOPPUTULOS ~")
     print(f"Muoto: {nimi.kynsimuoto}")
-    print(f"Väri: {nimi.väri}")
+    print(f"Väri: {nimi.vari}")
     print(f"Koristelu: {nimi.koristelu}")
     print(f"Ekologisuus pisteet {nimi.ekologisuus}")
     print("\nPELIN LOPPUTULOS")
+
     if nimi.ekologisuus >= 30:
         print("VOITIT PELIN!")
         print("Kynsistä tuli upeat ja onnistuit tekemään erittäin ekologisia valintoja.")
@@ -266,6 +256,9 @@ def studio1(nimi):
     else:
         print("Et voittanut tällä kertaa.")
         print("Materiaalien kulutus oli liian suurta.")
+
+
+
 # Luodaan nimi hahmo
 nimi = Pelaaja(name)
 
@@ -296,21 +289,19 @@ while True:
 
     elif valinta == "5":
         tallenna_peli(nimi)
+
     elif valinta == "6":
         print("")
         print("~ LADATAAN PELI ~")
-
-        tallennettu = Lataapeli(pelaaja.nimi)
-
+        tallennettu = Lataapeli(nimi.nimi)
         if tallennettu is not None:
-        pelaaja.lataa_tiedot(tallennettu)
-        print("Peli ladattu onnistuneesti!")
-        pelaaja.nayta_tiedot()        
+            nimi.lataa_tiedot(tallennettu)
+            print("Peli ladattu onnistuneesti!")
+            nimi.nayta_tiedot()       
 
     elif valinta == "7" or valinta == "lopeta":
         print("")
         print("Peli lopetettu.")
         break
-
     else:
-        print("Virheellinen valinta. Valitse numero 1-6.")
+        print("Virheellinen valinta. Valitse numero 1-7.")
