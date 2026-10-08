@@ -7,20 +7,31 @@ def Lataapeli(nimi):
         with open(f"tallennus_{nimi}.json", "r") as tiedosto:
              return json.load(tiedosto)
     except FileNotFoundError:
+         print("Tallennettua peliä ei löytynyt")
          return None
 # Tallennetaan peli
 def tallenna_peli(pelaaja):
-    tavaroidenNimet = []
-    for tavara in pelaaja.tavarat:
-        tavaroidenNimet.append(tavara.nimi)
-
     tallennus = {"nimi": pelaaja.nimi, "sijainti": pelaaja.sijainti, "ekologisuus": pelaaja.ekologisuus, "tavarat": pelaaja.tavarat}
-    with open(f"tallennus_{pelaaja.nimi}.json", "w") as tiedosto:
-         json.dump(tallennus, tiedosto)
+    with open(f"tallennus_{pelaaja.nimi}.json", "w", encoding="utf-8") as tiedosto:
+         json.dump(tallennus, tiedosto, ensure_ascii=False, indent=4)
     with open(f"tallennus_{pelaaja.nimi}.json", "r") as tiedosto:
          dataluettu = json.load(tiedosto)
-# Printtaa ilman "#" merkkiä
-#Printtaatallennetuttiedostot(dataluettu)
+    print("")
+    print("Peli tallennettu onnistuneesti. ")
+    print("")
+
+# Tallennuksen tietojen näyttäminen 
+def Printtaatallennetuttiedostot(dataluettu): 
+    print("") 
+    print("~ TALLENNETTU PELI ~") 
+    print(f"Pelaaja: {dataluettu['nimi']}") 
+    print(f"Sijainti: {dataluettu['sijainti']}") 
+    print(f"Ekologisuus: {dataluettu['ekologisuus']}") 
+    print(f"Tavarat: {dataluettu['tavarat']}") 
+    print(f"Kynsimuoto: {dataluettu['kynsimuoto']}") 
+    print(f"Väri: {dataluettu['vari']}") 
+    print(f"Koristelu: {dataluettu['koristelu']}") 
+    print("")
 
 # Funktio print komennolle
 def Printtaatallennetuttiedostot(dataluettu):
@@ -69,9 +80,15 @@ class Pelaaja():
         print(f"Ekologisuus: {self.ekologisuus}")
         print(f"Tavarat: {self.tavarat}")
         print("")
-
+    def lataa_tiedot(self, dataluettu):
+        self.nimi = dataluettu["nimi"]
+        self.sijainti = dataluettu["sijainti"]
+        self.ekologisuus = dataluettu["ekologisuus"]
+        self.tavarat = dataluettu["tavarat"]
+        self.kynsimuoto = dataluettu["kynsimuoto"]
+        self.vari = dataluettu["vari"]
+        self.koristelu = dataluettu["koristelu"]
 ## Kynsistudio -->
-
 class Kynsistudio:
     def __init__(self, nimi, ika):
         self.nimi = nimi
@@ -82,7 +99,7 @@ class Kynsistudio:
         self.inventaario.append(tavara)
         print(f"Lisättiin inventaarioon: {tavara}")
 #Lista
-    def lista1(pelaaja):
+    def lista1(nimi):
         print("")
         print("~ KYNNENMUOTO ~")
         print("Coffin kynnet")
@@ -92,25 +109,25 @@ class Kynsistudio:
         print("")
         choice = input("Valitse ensin kynsillesi muoto 1-4: ")
         if choice == "1":
-            pelaaja.kynsimuoto = "Coffin"
+            nimi.kynsimuoto = "Coffin"
             print("Kestävä valinta <3: kynsien huolellinen hoito vähentää turhaa materiaalien käyttöä.")
-            pelaaja.ekologisuus += 8
+            nimi.ekologisuus += 8
         elif choice == "2":
-            pelaaja.kynsimuoto = "Ballerina"
+            nimi.kynsimuoto = "Ballerina"
             print("Materiaaleja kuluu enemmän ja jätettä syntyy enemmän.")
-            pelaaja.ekologisuus -= 3
+            nimi.ekologisuus -= 3
         elif choice == "3":
-            pelaaja.kynsimuoto = "Almond"
+            nimi.kynsimuoto = "Almond"
             print("Kestävä valinta <3: Käytetään materiaaleja säästeliäästi ja vältetään turhaa jätettä.")
-            pelaaja.ekologisuus += 5
+            nimi.ekologisuus += 5
         elif choice == "4":
-            pelaaja.kynsimuoto = "Stiletto"
+            nimi.kynsimuoto = "Stiletto"
             print("Kynnet menivät rikki, teknikko aloittaa alusta ja joutuu avaamaan uuden paketin")
-            pelaaja.ekologisuus -= 6
+            nimi.ekologisuus -= 6
         else:
             print("Virheellinen valinta")
             return
-    def lista3(pelaaja):
+    def lista3(nimi):
         print("")
         print("~ VÄRI ~")
         print("Vaaleanpunainen glitter")
@@ -120,27 +137,27 @@ class Kynsistudio:
         print("")
         choice = input ("Valitse kynsillesi väri 1-4: ")
         if choice == "1":
-            pelaaja.vari = "Vaaleanpunainen glitter"
-            pelaaja.ekologisuus -= 3
+            nimi.vari = "Vaaleanpunainen glitter"
+            nimi.ekologisuus -= 3
             print("Glitteriä kului paljon ja osa materiaalista jäi käyttämättä.")
         elif choice == "2":
-            pelaaja.vari = "Luonnonvihreä"
-            pelaaja.ekologisuus += 4
+            nimi.vari = "Luonnonvihreä"
+            nimi.ekologisuus += 4
             print("Kestävä valinta: Valitsit ekologisen sävyn ja vähän materiaalia kuluttavan värin.")
         elif choice == "3":
-            pelaaja.vari = "Oranssi"
-            pelaaja.ekologisuus -= 5
+            nimi.vari = "Oranssi"
+            nimi.ekologisuus -= 5
             print("Käytit liikaa materiaalia...")
         elif choice == "4":
-            pelaaja.vari = "Valkoinen"
-            ("Kestävä valinta <3: Värin käyttö oli säästeliästä!")
-            pelaaja.ekologisuus += 6
+            nimi.vari = "Valkoinen"
+            print("Kestävä valinta <3: Värin käyttö oli säästeliästä!")
+            nimi.ekologisuus += 6
         else:
             print("Virheellinen valinta")
             return
         print("")
-        print(f"Valitsit väriksi: {pelaaja.kynsivari}")
-        print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
+        print(f"Valitsit väriksi: {nimi.vari}")
+        print(f"Ekologisuuspisteesi: {nimi.ekologisuus}")
     def valikko():
          print("~ PÄÄVALIKKO ~")
          print("Aloita peli kirjoittamalla 1")
@@ -148,9 +165,10 @@ class Kynsistudio:
          print("Näät creditit kirjoittamalla 3")
          print("Näe pelaajan tiedot kirjoittamalla 4")
          print("Tallenna peli kirjoittamalla 5")
-         print("Lopeta peli kirjoittamalla, <lopeta> 6")
+         print("Lataa peli kirjoittamalla 6")
+         print("Lopeta peli kirjoittamalla, <lopeta> 7")
          print("")
-    def lista2(pelaaja):
+    def lista2(nimi):
          print("")
          print("~ KORISTELUVAIHTOEHDOT ~")
          print("valinta 1, pelkkä pohja väri")
@@ -160,31 +178,31 @@ class Kynsistudio:
          print("")
          choice = input("Valitse seuraavaksi koristeluvaihtoehto 1-4: ")
          if choice == "1":
-             pelaaja.koristelu = "Pohjaväri"
+             nimi.koristelu = "Pohjaväri"
              print("Valitsit pelkän pohjavärin.")
              print("Kestävä valinta<3: koristeluun ei mene ylimääräisiä materiaaleja")
-             pelaaja.ekologisuus += 6
+             nimi.ekologisuus += 6
          elif choice == "2":
-             pelaaja.koristelu = "french tip"
+             nimi.koristelu = "french tip"
              print("Valitsit french tip koristelun")
              print("Hieno ja kohtuullisen vähämateriaalinen koristelu.")
-             pelaaja.ekologisuus += 3
+             nimi.ekologisuus += 3
          elif choice == "3":
-             pelaaja.koristelu = "base + koristeet"
+             nimi.koristelu = "base + koristeet"
              print("Valitsit base + koristeet")
              print("Koristeita käytetään enemmän ja materiaalia kuluu enemmän.")
-             pelaaja.ekologisuus -= 3
+             nimi.ekologisuus -= 3
          elif choice == "4":
-             pelaaja.koristelu = "animal print"
+             nimi.koristelu = "animal print"
              print("Valitsit animal print koristelun")
              print("Koristeluun tarvitaan useita eri materiaaleja.")
-             pelaaja.ekologisuus -= 5
+             nimi.ekologisuus -= 5
          else:
             print("Virheellinen valinta.")
             return
          print("")
-         print(f"Valitsit koristeluksi: {pelaaja.koristelu}")
-         print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
+         print(f"Valitsit koristeluksi: {nimi.koristelu}")
+         print(f"Ekologisuuspisteesi: {nimi.ekologisuus}")
 
     def show_inventory(tavarat):
         print("")
@@ -198,7 +216,7 @@ class Kynsistudio:
 
 inventaario = []
 
-def studio1(pelaaja):
+def studio1(nimi):
     print("")
     print("Astut aulaan sisälle ja istut, sillä edessäsi on vielä muutama muu asiakas. Aula on siistin näköinen, mutta asiakaspalvelija näyttää hermostuneelta")
     print("Jatkat omia ajatuksiasi ja odotat kärsivällisesti. ")
@@ -206,47 +224,50 @@ def studio1(pelaaja):
 
     choice = input("Olet aulassa odottamassa vuoroasi, sinulle tarjotaan vettä hyväksytkö vaikka se on muovisessa pullossa? (kyllä/ei): ")
     if choice == "kyllä":
-        pelaaja.lisaa_tavara("Vesipullo")
-        pelaaja.ekologisuus -= 4
+        nimi.lisaa_tavara("Vesipullo")
+        nimi.ekologisuus -= 4
         print("Otat vesipullon vastaan")
     elif choice == "ei":
-        pelaaja.ekologisuus += 4
+        nimi.ekologisuus += 4
         print("Kieltäydyt vedestä")
     else:
         print("Et vastannut oikein")
     print("")
-    print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
+    print(f"Ekologisuuspisteesi: {nimi.ekologisuus}")
     print("")
     print("On sinun vuorosi ja istut alas pehmeälle tuolille")
-    Kynsistudio.lista1(pelaaja)
+    Kynsistudio.lista1(nimi)
     print("")
     print("Valitaan kynsiesi väri!")
     input("Paina Enter jatkaaksesi kynsien väriin")
-    Kynsistudio.lista3(pelaaja)
+    Kynsistudio.lista3(nimi)
     print("")
     input("Paina Enter jatkaaksesi kynsien koristeluun...")
-    Kynsistudio.lista2(pelaaja)
-    print(f"Kynsimuoto: {pelaaja.kynsimuoto}")
-    print(f"Koristelu: {pelaaja.koristelu}")
+    Kynsistudio.lista2(nimi)
+    print(f"Kynsimuoto: {nimi.kynsimuoto}")
+    print(f"Koristelu: {nimi.koristelu}")
     print("")
-    print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
+    print(f"Ekologisuuspisteesi: {nimi.ekologisuus}")
     print("")
 
     print("Kyntesi ovat valmiit!")
-    print("\n--- PELIN LOPPUTULOS ---")
-    print(f"Ekologisuuspisteesi: {pelaaja.ekologisuus}")
-
-    if pelaaja.ekologisuus >= 25:
+    print(" ~ KYNSIEN LOPPUTULOS ~")
+    print(f"Muoto: {nimi.kynsimuoto}")
+    print(f"Väri: {nimi.väri}")
+    print(f"Koristelu: {nimi.koristelu}")
+    print(f"Ekologisuus pisteet {nimi.ekologisuus}")
+    print("\nPELIN LOPPUTULOS")
+    if nimi.ekologisuus >= 30:
         print("VOITIT PELIN!")
         print("Kynsistä tuli upeat ja onnistuit tekemään erittäin ekologisia valintoja.")
-    elif pelaaja.ekologisuus >= 15:
+    elif nimi.ekologisuus >= 15:
         print("Hienosti tehty!")
         print("Kynnet onnistuivat, mutta olisit voinut tehdä vielä ekologisempia valintoja.")
     else:
         print("Et voittanut tällä kertaa.")
         print("Materiaalien kulutus oli liian suurta.")
-# Luodaan pelaaja hahmo
-pelaaja = Pelaaja(name)
+# Luodaan nimi hahmo
+nimi = Pelaaja(name)
 
 while True:
 
@@ -257,12 +278,12 @@ while True:
     if valinta == "1":
         print("")
         input("Paina Enter päästäksesi eteenpäin...")
-        studio1(pelaaja)
+        studio1(nimi)
 
     elif valinta == "2":
         print("")
         print("Avasit inventaarion.")
-        Kynsistudio.show_inventory(pelaaja.tavarat)
+        Kynsistudio.show_inventory(nimi.tavarat)
 
     elif valinta == "3":
         print("")
@@ -271,12 +292,22 @@ while True:
         print("Tehty vuonna: 2026")
 
     elif valinta == "4":
-        pelaaja.nayta_tiedot()
+        nimi.nayta_tiedot()
 
     elif valinta == "5":
-        tallenna_peli(pelaaja)
+        tallenna_peli(nimi)
+    elif valinta == "6":
+        print("")
+        print("~ LADATAAN PELI ~")
 
-    elif valinta == "6" or valinta == "lopeta":
+        tallennettu = Lataapeli(pelaaja.nimi)
+
+        if tallennettu is not None:
+        pelaaja.lataa_tiedot(tallennettu)
+        print("Peli ladattu onnistuneesti!")
+        pelaaja.nayta_tiedot()        
+
+    elif valinta == "7" or valinta == "lopeta":
         print("")
         print("Peli lopetettu.")
         break
